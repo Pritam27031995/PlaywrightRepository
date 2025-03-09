@@ -1,0 +1,19 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts":{
+    "regression": "npx playwright test tests.E2EECommerceTest.spec.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.48.1",
+    "@types/node": "^22.7.9"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  }
+}
