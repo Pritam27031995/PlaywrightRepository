@@ -1,44 +1,36 @@
-const { test, expect, request } = require('@playwright/test');
-const { only } = require('node:test');
+const { test, expect} = require('@playwright/test');
+const TestData = JSON.parse(JSON.stringify(require("../TestData/Configuration.json")))
+const {Login} = require("../PageObjects/Login")
+const {ProductPage}=  require("../PageObjects/ProductPage")
+const {CartPage}= require("../PageObjects/CartPage")
+const {PaymentPage} = require("../PageObjects/PaymentPage")
+const {OrderdetailsPage} = require("../PageObjects/OrderdetailsPage")
 
-test.only("Test Cart E2E", async function ({ browser }) {
-    const product = "ADIDAS ORIGINAL"
+test("Test Cart E2E", async function ({ browser },testInfo) {
+    //browser context creation
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.goto("https://rahulshettyacademy.com/client");
-    await page.locator("#userEmail").fill("pritam.debnath@gmail.com");
-    await page.locator("#userPassword").fill("Test@1234");
-    await page.locator("#login").click();
-    await page.locator(".card-body b").first().waitFor();
-    const products = await page.locator(".card-body");
-    for (let i = 0; i < await products.count(); ++i) {
-        console.log(products.nth(i).locator("b").textContent());
-        if (await products.nth(i).locator("b").textContent() === product) {
-            await products.nth(i).locator("text=Add To Cart").click();
-            break;
-        }
 
-    }
-    await page.locator("[routerlink='/dashboard/cart']").click();
-    await page.locator("text=My Cart").waitFor();
-    await expect(page.locator("h3:has-text('" + product + "')").isVisible()).toBeTruthy();
-    await page.locator("text=Checkout").click();
-    await page.locator("text= Payment Method ").waitFor();
-    await page.locator("[placeholder='Select Country']").pressSequentially("Ind");
-    await page.locator(".ta-results").waitFor();
-    const list = await page.locator(".ta-item");
-    await console.log(list.count());
-    for (let j = 0; j < await list.count(); ++j) {
-        if (await list.nth(j).textContent() === " India") {
-            await list.nth(j).locator("i").click();
-            break;
+    //local variable creation
+    const product = "ADIDAS ORIGINAL"
+    
+    //Page object creation
+    const login = await new Login(page,testInfo);
+    const productPage = new ProductPage(page,testInfo);
+    const cartpage = new CartPage(page,testInfo);
+    const paymentpage = new PaymentPage(page,testInfo);
+    const orderDetailsPage = new OrderdetailsPage(page,testInfo);
 
-        }
-    }
-    await expect(page.locator("label[type='text']")).toHaveText("pritam.debnath@gmail.com");
-    await page.locator("text=Place Order ").click();
-    await page.locator(".hero-primary").waitFor();
-    console.log(await page.locator("label.ng-star-inserted").textContent());
+    //Actual function calls
+    await login.loginToHomePage(TestData.URL, TestData.Username, TestData.Password);
+    await productPage.addToCart(product);
+    await cartpage.validateCart(product);
+    await paymentpage.validatePaymentandPlaceOrder(TestData.Username);
+    await orderDetailsPage.getOrderId();
+    
+    
+    
+
 
 
 
