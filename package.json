@@ -2,8 +2,9 @@
   "name": "playwright",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts":{
-    "regression": "npx playwright test tests.E2EECommerceTest.spec.js"
+  "scripts": {
+    "regression": "npx playwright test tests.E2EECommerceTest.spec.js",
+    "regression_ts": "npx playwright test tests.E2EECommerceTest.spec.ts"
   },
   "keywords": [],
   "author": "",
@@ -11,9 +12,11 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.48.1",
-    "@types/node": "^22.7.9"
+    "@types/node": "^22.7.9",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
+    "@cucumber/cucumber": "^11.2.0",
     "exceljs": "^4.4.0"
   }
 }
