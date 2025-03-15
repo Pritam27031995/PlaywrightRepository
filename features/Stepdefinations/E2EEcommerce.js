@@ -10,16 +10,7 @@ const { OrderdetailsPage } = require("../../PageObjects_BDD/OrderdetailsPage")
 
 
 Given('User have valid {string} and {string}', { timeout: 10 * 1000 }, async function (Username, Password) {
-    //browser context creation
-    const browser = await playwright.chromium.launch({
-        headless: false
-    });
-    //const testInfo = playwright.test.
-    const context = await browser.newContext();
-    this.page = await context.newPage();
-
     const login = await new Login(this.page);
-
     await login.loginToHomePage(TestData.URL, Username, Password);
 });
 
