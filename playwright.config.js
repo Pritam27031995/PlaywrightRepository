@@ -14,9 +14,10 @@ module.exports = defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     browserName: 'chromium',
     headless: false,
-    /*     launchOptions: {
-          args: ["--start-maximized"],
-        }, */
+    viewport: null,
+        launchOptions: {
+          args: ["--start-maximized"]
+        }
 
   },
 
