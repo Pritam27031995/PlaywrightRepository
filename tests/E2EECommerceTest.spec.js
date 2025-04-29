@@ -6,7 +6,7 @@ const {CartPage}= require("../PageObjects/CartPage")
 const {PaymentPage} = require("../PageObjects/PaymentPage")
 const {OrderdetailsPage} = require("../PageObjects/OrderdetailsPage")
 
-test("Test Cart E2E", async function ({ browser },testInfo) {
+test("Test Cart E2E",{tag:'@Regression'}, async function ({ browser },testInfo) {
     //browser context creation
     const context = await browser.newContext();
     const page = await context.newPage();

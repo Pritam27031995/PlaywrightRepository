@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "regression": "npx playwright test tests.E2EECommerceTest.spec.js",
+    "regression": "npx playwright test tests.E2EECommerceTest.spec.js --grep @Regression",
     "regression_ts": "npx playwright test tests.E2EECommerceTest.spec.ts"
   },
   "keywords": [],
