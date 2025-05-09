@@ -1,26 +1,26 @@
-const { BeforeAll, AfterAll, After, BeforeStep, AfterStep } = require("@cucumber/cucumber");
+const { BeforeAll, AfterAll,Before, After, BeforeStep, AfterStep } = require("@cucumber/cucumber");
 const playwright = require('@playwright/test');
 const { before, after } = require("node:test");
 
 BeforeAll(async function(){
-    //browser context creation
+/*     //browser context creation
     const browser = await playwright.chromium.launch({
         headless: false
     });
     //const testInfo = playwright.test.
     const context = await browser.newContext();
-    this.page = await context.newPage();
+    this.page = await context.newPage(); */
 })
 
 AfterAll(function(){
     console.log("After all scenarios");
 })
 
-before(function(){
+Before(function(){
     console.log("Before each scenario");
 })
 
-after(function(){
+After(function(){
     console.log("After each scenario");
 })
 

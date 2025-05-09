@@ -14,7 +14,7 @@ class Login {
         await this.page.goto(URL);
         await this.Username.fill(Username);
         await this.password.fill(Password);
-        //await new Base(this.page, this.testInfo).takeScreenshot("LoginPageFilled");
+        await new Base(this.page, this.testInfo).takeScreenshotAllure("LoginPageFilled");
         await this.loginButton.click();
     }
 }

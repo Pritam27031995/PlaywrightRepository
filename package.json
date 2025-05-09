@@ -11,12 +11,15 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.48.1",
+    "@cucumber/messages": "^27.2.0",
+    "@playwright/test": "^1.52.0",
     "@types/node": "^22.7.9",
     "typescript": "^5.8.2"
   },
   "dependencies": {
     "@cucumber/cucumber": "^11.2.0",
+    "allure-cucumberjs": "^3.2.1",
+    "allure-js-commons": "^3.2.1",
     "exceljs": "^4.4.0"
   }
 }

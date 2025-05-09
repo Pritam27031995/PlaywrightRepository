@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
+const { Given, When, Then, BeforeAll, Before ,AfterStep,After} = require('@cucumber/cucumber');
 const { TIMEOUT } = require('dns');
 const playwright = require('@playwright/test')
 const TestData = JSON.parse(JSON.stringify(require("../../TestData/Configuration.json")))
@@ -7,6 +7,23 @@ const { ProductPage } = require("../../PageObjects_BDD/ProductPage")
 const { CartPage } = require("../../PageObjects_BDD/CartPage")
 const { PaymentPage } = require("../../PageObjects_BDD/PaymentPage")
 const { OrderdetailsPage } = require("../../PageObjects_BDD/OrderdetailsPage")
+//const {allure} = require("allure-js-commons")
+
+
+Before(async function(scenario){
+    //browser context creation
+    const browser = await playwright.chromium.launch({
+        headless: false
+    });
+    //const testInfo = playwright.test.
+    const context = await browser.newContext();
+    this.page = await context.newPage();
+    console.log("I am executing first");
+    //this.allureTest = allure.sta
+    //this.page.goto("https://www.google.com/");
+})
+
+
 
 
 Given('User have valid {string} and {string}', { timeout: 10 * 1000 }, async function (Username, Password) {

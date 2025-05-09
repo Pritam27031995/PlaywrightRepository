@@ -8,7 +8,8 @@ module.exports = defineConfig({
   expect: {
     timeout: 5000
   },
-  reporter: 'html',
+  //reporter: 'html',
+  reporter: [["line"], ["allure-playwright"]],
   retries: 3,
   workers:2,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */

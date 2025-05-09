@@ -1,0 +1,11 @@
+  {
+    "default": {
+      "parallel": 4,
+      "format": [
+        "allure-cucumberjs/reporter:./out/ignoreme.txt"
+      ],
+      "formatOptions": {
+        "resultsDir": "./allure-results"
+      }
+    }
+  }
